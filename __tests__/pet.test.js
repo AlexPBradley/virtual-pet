@@ -102,3 +102,35 @@ describe('checkup', () => {
         expect(Fido.checkup()).toEqual("I feel great");
     })
 });
+
+describe('isAlive', () => {
+    it('is Fido too hungry', () => {
+        const Fido = new Pet('Fido');
+
+        this.fitness = 5;
+        this.hunger = 10;
+        this.age = 20;
+
+        expect(Fido.isAlive()).toEqual(false);
+    });
+
+    it('is Fido too tired', () => {
+        const Fido = new Pet('Fido');
+
+        this.fitness = 0;
+        this.hunger = 5;
+        this.age = 20;
+
+        expect(Fido.isAlive()).toEqual(false);
+    });
+
+    it('is Fido too old', () => {
+        const Fido = new Pet('Fido');
+
+        this.fitness = 5;
+        this.hunger = 5;
+        this.age = 20;
+
+        expect(Fido.isAlive()).toEqual(false);
+    });
+});

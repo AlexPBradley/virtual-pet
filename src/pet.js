@@ -1,5 +1,8 @@
 const maxFitness = 10;
+const minFitness = 0;
+const maxHunger = 10;
 const minHunger = 0;
+const maxAge = 30;
 
 function Pet(name) {
     this.name = name;
@@ -40,6 +43,18 @@ Pet.prototype.checkup = function(){
     }else{
         return "I feel great";
     };
+};
+
+Pet.prototype.isAlive = function(){
+    if(this.fintess <= minFitness){
+        return false;
+      }else if(this.hunger >= maxHunger){
+          return false;
+      }else if(this.age = maxAge){
+          return false;
+      }else{
+          return true;
+      };
 };
 
 module.exports = Pet;
