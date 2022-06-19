@@ -15,6 +15,14 @@ describe('constructor', () => {
 });
 
 describe('growUp', () => {
+    it('throws an error if the pet is not alive', () => {
+        const Fido = new Pet('Fido');
+  
+        Fido.age = 30;
+  
+        expect(() => Fido.feed()).toThrow('Your pet is no longer alive :(');
+    });
+
     it('alter age, hunger and fitness', () => {
         const Fido = new Pet('Fido');
 
@@ -27,6 +35,14 @@ describe('growUp', () => {
 });
 
 describe('walk', () => {
+    it('throws an error if the pet is not alive', () => {
+        const Fido = new Pet('Fido');
+  
+        Fido.fitness = 0;
+  
+        expect(() => Fido.feed()).toThrow('Your pet is no longer alive :(');
+    });
+
     it('increase fitness by 4', () => {
         const Fido = new Pet('Fido');
 
@@ -48,6 +64,14 @@ describe('walk', () => {
 });
 
 describe('feed', () => {
+    it('throws an error if the pet is not alive', () => {
+        const Fido = new Pet('Fido');
+  
+        Fido.hunger = 10;
+  
+        expect(() => Fido.feed()).toThrow('Your pet is no longer alive :(');
+    });
+
     it('hunger decrese 3', () => {
         const Fido = new Pet('Fido');
 
@@ -103,34 +127,15 @@ describe('checkup', () => {
     })
 });
 
-describe('isAlive', () => {
-    it('is Fido too hungry', () => {
+describe('haveBaby', () => {
+    it('Make Fido have a baby', () => {
         const Fido = new Pet('Fido');
-
-        this.fitness = 5;
-        this.hunger = 10;
-        this.age = 20;
-
-        expect(Fido.isAlive()).toEqual(false);
+  
+        Fido.haveBaby('FidoJr');
+  
+        expect(Fido.children[0].name).toEqual("FidoJr");
+        expect(Fido.children[0].age).toEqual(0);
+        expect(Fido.children[0].fitness).toEqual(10);
     });
 
-    it('is Fido too tired', () => {
-        const Fido = new Pet('Fido');
-
-        this.fitness = 0;
-        this.hunger = 5;
-        this.age = 20;
-
-        expect(Fido.isAlive()).toEqual(false);
-    });
-
-    it('is Fido too old', () => {
-        const Fido = new Pet('Fido');
-
-        this.fitness = 5;
-        this.hunger = 5;
-        this.age = 20;
-
-        expect(Fido.isAlive()).toEqual(false);
-    });
 });
